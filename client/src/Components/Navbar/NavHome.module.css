@@ -1,0 +1,20 @@
+.mainContainer {
+    display: inline-block;
+    outline: 0;
+    border:0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    background: #fff;
+    line-height: 40px;
+    border-radius: 60px;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: #ffaabb -2px -2px 0px 2px, #3f3052 0px 0px 0px 4px;
+    transition: all 0.4s;
+}
+.mainContainer:hover{
+    box-shadow: #3f3052  -2px -2px 0px 2px, #ffaabb 0px 0px 0px 4px;
+}

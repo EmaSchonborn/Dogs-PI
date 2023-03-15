@@ -1,0 +1,33 @@
+.searchbar_container {
+  position: relative;
+  display: inline-block;
+}
+
+.searchbar {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  width: fit-content;
+  box-sizing: border-box;
+  
+}
+
+.searchbar_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(5%);
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: #e0aeb8;
+  background: #fff;
+  box-shadow: #ffaabb -2px -2px 0px 2px, #3f3052 0px 0px 0px 4px;
+  font-weight: 600;
+}
+.searchbar_button:hover {
+  cursor: pointer;
+}
+

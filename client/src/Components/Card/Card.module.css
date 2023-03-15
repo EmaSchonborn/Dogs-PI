@@ -1,0 +1,40 @@
+.card {
+  box-shadow: 5px 5px 5px #e7779cb1;
+  width: 20em;
+  height: 20em;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: column;
+  background-color: #653e65;
+  transition: all 0.5s;
+}
+
+.card:hover {
+  background-color: #9c557f;
+}
+
+.section {
+  font-size: 1rem;
+}
+
+.sectionTwo {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+}
+
+.name,
+a:link,
+a:visited {
+  color: rgb(220, 180, 180);
+  font-weight: 600;
+  text-align: center;
+  text-decoration-line: none;
+}
+
+img {
+  object-fit: cover;
+  width: 20em;
+  height: 12em;
+}

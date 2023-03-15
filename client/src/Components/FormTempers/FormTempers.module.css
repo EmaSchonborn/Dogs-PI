@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  gap: 0.5em;
+  background-color: #723c5b;
+  color: white;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.container span {
+  background-color: #a3718da9;
+  border-radius: 3px;
+}
