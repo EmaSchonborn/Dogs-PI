@@ -1,16 +1,21 @@
-import { GET_DOGS } from "./actions";
-import { GET_DOG } from "./actions";
-import { GET_DOG_BY_NAME } from "./actions";
-import { GET_TEMPERS } from "./actions";
-import { ORDER_WEIGHT_ALPHABET } from "./actions";
-import { FILTER_BY_TEMPER } from "./actions";
-import { FILTER_BY_SOURCE } from "./actions";
+import {
+  GET_DOGS,
+  GET_DOG,
+  GET_DOG_BY_NAME,
+  GET_TEMPERS,
+  ORDER_WEIGHT_ALPHABET,
+  FILTER_BY_TEMPER,
+  FILTER_BY_SOURCE,
+  SET_CURRENT_PAGE,
+} from "./actions";
 
 const intialState = {
   dogs: [],
   dog: [],
   ftrDogs: [],
+  ftrTempers: [],
   tempers: [],
+  currentPage: 1,
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -42,29 +47,17 @@ const rootReducer = (state = intialState, action) => {
       return { ...state, ftrDogs: sortedSource };
 
     case ORDER_WEIGHT_ALPHABET:
+      const originalDogs = [...state.ftrDogs];
       const sortedWeight =
         action.payload === "Min_Weigth"
-          ? state.ftrDogs.sort((a, b) => {
-              return a.averageWeight - b.averageWeight;
-            })
+          ? originalDogs.sort((a, b) => a.averageWeight - b.averageWeight)
           : action.payload === "Max_Weigth"
-          ? state.ftrDogs.sort((a, b) => {
-              return b.averageWeight - a.averageWeight;
-            })
+          ? originalDogs.sort((a, b) => b.averageWeight - a.averageWeight)
           : action.payload === "ascendant"
-          ? state.ftrDogs.sort((a, b) => {
-              if (a.name > b.name) return 1;
-              if (a.name < b.name) return -1;
-              return 0;
-            })
+          ? originalDogs.sort((a, b) => (a.name > b.name ? 1 : -1))
           : action.payload === "descendant"
-          ? state.ftrDogs.sort((a, b) => {
-              if (b.name > a.name) return 1;
-              if (b.name < a.name) return -1;
-              return 0;
-            })
-          : state.ftrDogs;
-
+          ? originalDogs.sort((a, b) => (b.name > a.name ? 1 : -1))
+          : originalDogs;
       return { ...state, ftrDogs: sortedWeight };
 
     case FILTER_BY_TEMPER:
@@ -79,11 +72,16 @@ const rootReducer = (state = intialState, action) => {
             : undefined;
           if (found) {
             filteredDogs.push(dogs[i]);
-            console.log(found);
           }
         }
       }
       return { ...state, ftrDogs: filteredDogs };
+
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
 
     default:
       return { ...state };

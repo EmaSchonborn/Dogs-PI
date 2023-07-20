@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { getDogs, getTempers } from "../../redux/actions";
+import { useEffect } from "react";
+import { getDogs, getTempers, setCurrentPage } from "../../redux/actions";
 import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 import style from "./CardsContainer.module.css";
@@ -8,32 +8,31 @@ import { Link } from "react-router-dom";
 
 const CardsContainer = () => {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.currentPage);
 
   const pagination = (indexPage) => {
-    setCurrentPage(indexPage);
+    dispatch(setCurrentPage(indexPage));
   };
 
   const handlePrevPagination = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+    dispatch(setCurrentPage((prevPage) => prevPage - 1));
   };
   const handleNextPagination = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    dispatch(setCurrentPage((prevPage) => prevPage + 1));
   };
   const handleFirstCell = () => {
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
   const handleLastCell = () => {
-    setCurrentPage(lastCell);
+    dispatch(setCurrentPage(lastCell));
   };
+
+  const dogs = useSelector((state) => state.ftrDogs);
 
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTempers());
   }, [dispatch]);
-
-  const dogs = useSelector((state) => state.ftrDogs);
- 
 
   const displayedDogs = 8;
   const finalReference = currentPage * displayedDogs;

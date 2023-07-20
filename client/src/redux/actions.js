@@ -8,6 +8,7 @@ export const GET_TEMPERS = "GET_TEMPERS";
 export const ORDER_WEIGHT_ALPHABET = "ORDER_WEIGHT_ALPHABET";
 export const FILTER_BY_TEMPER = "FILTER_BY_TEMPER";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 //es mejor dejar la lógica en las actions, para que el reducer sólo haga los cambios de estados
 
@@ -63,6 +64,13 @@ export const postDog = (payload) => {
   return async function() {
     const data = await axios.post("http://localhost:3001/dogs", payload);
     return data;
+  }
+}
+
+export const setCurrentPage = (pageNumber) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    payload: pageNumber,
   }
 }
 

@@ -18,7 +18,7 @@ const Form = () => {
   const validate = (form) => {
     let errors = {};
     form.name.length > 0 && !letters.test(form.name)
-      ? (errors.name = "3 characters at least required- Only letters allowed")
+      ? (errors.name = "Only letters allowed")
       : (errors.name = "");
 
     form.height.length > 0 && !(form.height >= 5)
@@ -91,7 +91,6 @@ const Form = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(postDog(form));
-    alert("The dog was succesfully created");
     setForm({
       name: "",
       height: "",
@@ -196,9 +195,20 @@ const Form = () => {
             className={style.formTemper}
           />
         </div>
-        <button className={style.button_create} disabled={button} type="submit">
-          Create
-        </button>
+        {button ? (
+          <button className={style.button_create} type="button">
+            Complete all fields
+          </button>
+        ) : (
+          <button
+            className={style.button_create}
+            disabled={button}
+            type="submit"
+          >
+            Create
+          </button>
+        )}
+
         {successSubmit && (
           <em disabled={successSubmit}>The dog was succesfully created</em>
         )}

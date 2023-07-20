@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filterByTemper, filterBySource } from "../../redux/actions";
+import { filterByTemper, filterBySource } from "../../redux/actions"
 import style from "./Filtering.module.css";
 
 const Filter = () => {
@@ -10,6 +10,7 @@ const Filter = () => {
     e.preventDefault();
     dispatch(filterByTemper(e.target.value));
   };
+  
 
   const handleSourceDogs = (e) => {
     e.preventDefault();
