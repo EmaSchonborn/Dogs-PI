@@ -1,5 +1,5 @@
 const { Dog, Temper } = require("../db");
-import axios from "axios";
+const axios = require("axios");
 const urlSource = "https://api.thedogapi.com/v1/breeds";
 const { YOUR_API_KEY } = process.env;
 

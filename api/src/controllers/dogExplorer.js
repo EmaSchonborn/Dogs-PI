@@ -1,6 +1,6 @@
 const { Dog, Temper } = require("../db");
 const { Op } = require("sequelize");
-import axios from "axios";
+const axios = require("axios");
 const urlSource = "https://api.thedogapi.com/v1/breeds";
 const urlSource2 = "https://api.thedogapi.com/v1/breeds/search?name=";
 const { YOUR_API_KEY } = process.env;
