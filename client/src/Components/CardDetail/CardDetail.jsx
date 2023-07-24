@@ -3,6 +3,7 @@ import style from "./CardDetail.module.css";
 
 const DetailedDog = () => {
   const dog = useSelector((state) => state.dog);
+  const tempers = dog.tempers?.map((temp) => temp.name).join(", ");
 
   return (
     <div className={style.idCard}>
@@ -17,7 +18,7 @@ const DetailedDog = () => {
           <span>Height: {dog.height} cm</span>
           <span>Weight: {dog.weight} kg</span>
           <span>Life span: {dog.life_span} </span>
-          <span>Temperaments: {dog.temperament }</span>
+          <span>Temperaments: {tempers }</span>
         </div>
       </section>
     </div>
