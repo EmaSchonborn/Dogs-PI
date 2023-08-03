@@ -15,10 +15,10 @@ const CardsContainer = () => {
   };
 
   const handlePrevPagination = () => {
-    dispatch(setCurrentPage((prevPage) => prevPage - 1));
+    dispatch(setCurrentPage(currentPage - 1));
   };
   const handleNextPagination = () => {
-    dispatch(setCurrentPage((prevPage) => prevPage + 1));
+    dispatch(setCurrentPage(currentPage + 1));
   };
   const handleFirstCell = () => {
     dispatch(setCurrentPage(1));
@@ -54,7 +54,7 @@ const CardsContainer = () => {
   return (
     <div className={style.container}>
       <div className={style.cardsContainer}>
-        {paginationDogs?.map((dog) => {
+        {paginationDogs? paginationDogs?.map((dog) => {
           return (
             <Link key={dog.id} to={`/detail/${dog.id}`}>
               <div>
@@ -69,7 +69,7 @@ const CardsContainer = () => {
               </div>
             </Link>
           );
-        })}
+        }) : <h1></h1>}
       </div>
       <div className={style.pagination}>
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
