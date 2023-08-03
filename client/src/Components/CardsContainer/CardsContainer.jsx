@@ -45,7 +45,7 @@ const CardsContainer = () => {
     dispatch(getTempers());
   }, [dispatch]);
 
-  const displayedDogs = 9;
+  const displayedDogs = 8;
   const finalReference = currentPage * displayedDogs;
   const initialReference = finalReference - displayedDogs;
   const paginationDogs = dogs?.slice(initialReference, finalReference);
@@ -64,28 +64,6 @@ const CardsContainer = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.pagination}>
-        <button disabled={currentPage === 1} onClick={handleFirstCell}>
-          First
-        </button>
-        <button disabled={currentPage === 1} onClick={handlePrevPagination}>
-          ⇠
-        </button>
-        <Paginate
-          totalPages={totalPages}
-          paginate={pagination}
-          currentPage={currentPage}
-        />
-        <button
-          disabled={currentPage === lastCell}
-          onClick={handleNextPagination}
-        >
-          ⇢
-        </button>
-        <button disabled={currentPage === lastCell} onClick={handleLastCell}>
-          Last
-        </button>
-      </div>
       <div className={style.cardsContainer}>
         {paginationDogs? paginationDogs?.map((dog) => {
           return (

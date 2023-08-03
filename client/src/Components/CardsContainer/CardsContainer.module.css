@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,13 +8,13 @@
 
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5em 1.5em;
   width: fit-content;
 }
 
-.pagination{
-  display:flex;
+.pagination {
+  display: flex;
   align-items: center;
   border-radius: 10px;
   gap: 1rem;

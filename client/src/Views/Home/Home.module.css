@@ -1,9 +1,8 @@
 .container {
   background-image: url("https://st2.depositphotos.com/1106005/8592/i/600/depositphotos_85929920-stock-photo-black-and-white-doggy-tile.jpg");
   background-repeat: repeat;
-  background-size: cover;
+  background-size: contain;
   background-color: #000000c3;
-  height: 100vh;
 }
 .filter {
   backdrop-filter: blur(3px);
