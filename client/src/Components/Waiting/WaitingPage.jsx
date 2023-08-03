@@ -1,6 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import style from "./WaitingPage.module.css";
+import { getDogs, getTempers } from "../../redux/actions";
 
 const Waitingpage = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDogs());
+    dispatch(getTempers());
+  }, [dispatch]);
+
+
+
   return (
     <div className={style.landing}>
       <video

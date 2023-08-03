@@ -29,16 +29,14 @@ const CardsContainer = () => {
     dispatch(setCurrentPage(lastCell));
   };
 
-  const dogs = useSelector((state) => state.ftrDogs);
-
+  
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTempers());
-    setTimeout(() => {
-      <Waitingpage />
-    }, 3000);
   }, [dispatch]);
-
+  
+  const dogs = useSelector((state) => state.ftrDogs);
+  
   const displayedDogs = 8;
   const finalReference = currentPage * displayedDogs;
   const initialReference = finalReference - displayedDogs;

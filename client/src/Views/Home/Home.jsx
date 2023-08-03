@@ -7,11 +7,11 @@ import WaitingPage from "../../Components/Waiting/WaitingPage";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const dogs = useSelector((state) => state.dogs);
+  let dogs = useSelector((state) => state.dogs);
 
   return (
     <div>
-      {dogs ? (
+      {(dogs.length === 0) ? (
         <WaitingPage />
       ) : (
         <div className={style.container}>

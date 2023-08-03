@@ -3,7 +3,9 @@ import style from "./CardDetail.module.css";
 
 const DetailedDog = () => {
   const dog = useSelector((state) => state.dog);
-  const tempers = dog.tempers?.map((temp) => temp.name).join(", ");
+  const tempers = isNaN(dog.id)
+    ? dog.tempers?.map((temp) => temp.name).join(", ")
+    : dog.temperament;
 
   return (
     <div className={style.idCard}>
@@ -18,7 +20,7 @@ const DetailedDog = () => {
           <span>Height: {dog.height} cm</span>
           <span>Weight: {dog.weight} kg</span>
           <span>Life span: {dog.life_span} </span>
-          <span>Temperaments: {tempers }</span>
+          <span>Temperaments: {tempers}</span>
         </div>
       </section>
     </div>
