@@ -14,17 +14,28 @@ const CardsContainer = () => {
     dispatch(setCurrentPage(indexPage));
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top:0,
+      behavior: "smooth",
+    });
+  }
+
   const handlePrevPagination = () => {
     dispatch(setCurrentPage(currentPage - 1));
+    scrollToTop();
   };
   const handleNextPagination = () => {
     dispatch(setCurrentPage(currentPage + 1));
+    scrollToTop();
   };
   const handleFirstCell = () => {
     dispatch(setCurrentPage(1));
+    scrollToTop();
   };
   const handleLastCell = () => {
     dispatch(setCurrentPage(lastCell));
+    scrollToTop();
   };
 
   const dogs = useSelector((state) => state.ftrDogs);
@@ -34,7 +45,7 @@ const CardsContainer = () => {
     dispatch(getTempers());
   }, [dispatch]);
 
-  const displayedDogs = 8;
+  const displayedDogs = 9;
   const finalReference = currentPage * displayedDogs;
   const initialReference = finalReference - displayedDogs;
   const paginationDogs = dogs?.slice(initialReference, finalReference);
@@ -53,6 +64,28 @@ const CardsContainer = () => {
 
   return (
     <div className={style.container}>
+      <div className={style.pagination}>
+        <button disabled={currentPage === 1} onClick={handleFirstCell}>
+          First
+        </button>
+        <button disabled={currentPage === 1} onClick={handlePrevPagination}>
+          ⇠
+        </button>
+        <Paginate
+          totalPages={totalPages}
+          paginate={pagination}
+          currentPage={currentPage}
+        />
+        <button
+          disabled={currentPage === lastCell}
+          onClick={handleNextPagination}
+        >
+          ⇢
+        </button>
+        <button disabled={currentPage === lastCell} onClick={handleLastCell}>
+          Last
+        </button>
+      </div>
       <div className={style.cardsContainer}>
         {paginationDogs? paginationDogs?.map((dog) => {
           return (
