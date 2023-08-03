@@ -18,6 +18,8 @@
   align-items: center;
   border-radius: 10px;
   gap: 1rem;
+  padding-top:25px;
+  padding-bottom:50px;
 }
 
 .pagination button {

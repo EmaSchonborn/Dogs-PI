@@ -5,6 +5,7 @@ import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 import style from "./CardsContainer.module.css";
 import { Link } from "react-router-dom";
+import Waitingpage from "../Waiting/WaitingPage";
 
 const CardsContainer = () => {
   const dispatch = useDispatch();
@@ -14,28 +15,18 @@ const CardsContainer = () => {
     dispatch(setCurrentPage(indexPage));
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top:0,
-      behavior: "smooth",
-    });
-  }
 
   const handlePrevPagination = () => {
     dispatch(setCurrentPage(currentPage - 1));
-    scrollToTop();
   };
   const handleNextPagination = () => {
     dispatch(setCurrentPage(currentPage + 1));
-    scrollToTop();
   };
   const handleFirstCell = () => {
     dispatch(setCurrentPage(1));
-    scrollToTop();
   };
   const handleLastCell = () => {
     dispatch(setCurrentPage(lastCell));
-    scrollToTop();
   };
 
   const dogs = useSelector((state) => state.ftrDogs);
@@ -43,6 +34,9 @@ const CardsContainer = () => {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTempers());
+    setTimeout(() => {
+      <Waitingpage />
+    }, 3000);
   }, [dispatch]);
 
   const displayedDogs = 8;
@@ -65,7 +59,7 @@ const CardsContainer = () => {
   return (
     <div className={style.container}>
       <div className={style.cardsContainer}>
-        {paginationDogs? paginationDogs?.map((dog) => {
+        {paginationDogs?.map((dog) => {
           return (
             <Link key={dog.id} to={`/detail/${dog.id}`}>
               <div>
@@ -80,7 +74,7 @@ const CardsContainer = () => {
               </div>
             </Link>
           );
-        }) : <h1></h1>}
+        })}
       </div>
       <div className={style.pagination}>
         <button disabled={currentPage === 1} onClick={handleFirstCell}>

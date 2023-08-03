@@ -1,0 +1,35 @@
+.landing {
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+  }
+  
+  .generalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .secTwo {
+    line-height: 1rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.092);
+    backdrop-filter: blur(10px);
+  }
+  
+  .video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 105%;
+    min-height: 100%;
+    z-index: -2;
+  }
+  
